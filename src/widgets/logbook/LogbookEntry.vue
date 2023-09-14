@@ -1,13 +1,13 @@
 <template>
-  <div class="list-group-item border-start-0 border-end-0 border-top-0 px-lg-0 py-3">
-    <div class="d-flex" :class="[{ featured: isFeatured }, colorClass]">
+  <div class="list-group-item border-start-0 border-end-0 border-top-0 px-0" :class="compact ? 'pt-2 pb-0' : 'py-3'">
+    <div class="d-flex px-0" :class="[{ featured: isFeatured }, colorClass]">
       <div class="ms-12 w-100">
         <div class="d-flex justify-content-between">
-          <h5 :class="entryTitleClass" class="title" v-html="parsedTitle"></h5>
+          <h5 :class="entryTitleClass" class="title mb-1" v-html="parsedTitle"></h5>
           <small class="text-nowrap">{{ entry.passedtime }}</small>
         </div>
-        <div class="text-muted text-sm" v-html="parsedText"></div>
-        <div class="mt-2">
+        <div class="text-muted text-sm mb-1" v-html="parsedText"></div>
+        <div class="mb-1">
           <div class="text-muted text-sm" v-if="entry.factionname">
             <font-awesome-icon :icon="'user-friends'" :class="`fa-icon`"/>
             {{ entry.factionname }}
@@ -28,6 +28,7 @@ export default {
     'name',
     'entry',
   ],
+  inject: ['compact'],
   methods: {
     /**
      * @return {boolean}

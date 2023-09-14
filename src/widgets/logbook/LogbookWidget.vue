@@ -2,7 +2,7 @@
   <widget>
     <template #header>
       <div class="d-flex justify-content-between">
-        <h4 class="card-title pb-3">Logbook</h4>
+        <h4 class="card-title" :class="compact ? 'pb-1' : 'pb-3'">Logbook</h4>
         <div>
           <font-awesome-icon class="cursor-pointer" :icon="`cogs`" data-bs-toggle="modal" data-bs-target="#logbook-setings"/>
           <Modal id="logbook-setings" title="Logbook settings" size="modal-lg">
@@ -57,6 +57,7 @@ export default {
       default: 100
     },
   },
+  inject: ['compact'],
   /**
    */
   watch: {
