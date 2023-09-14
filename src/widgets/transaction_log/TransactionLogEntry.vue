@@ -1,12 +1,12 @@
 <template>
-  <div class="list-group-item border-start-0 border-end-0 border-top-0 px-lg-0 py-3">
-    <div class="d-flex" :class="[{ featured: isFeatured }, colorClass]">
+  <div class="list-group-item border-start-0 border-end-0 border-top-0 px-0" :class="compact ? 'pt-2 pb-0' : 'py-3'">
+    <div class="d-flex px-0" :class="[{ featured: isFeatured }, colorClass]">
       <div class="ms-12 w-100">
         <div class="d-flex justify-content-between">
           <div :class="entryTitleClass" class="text-sm text-white" v-html="parsedTitle"></div>
           <small class="text-nowrap">{{ entry.passedtime }}</small>
         </div>
-        <div class="d-flex justify-content-between mt-1">
+        <div class="d-flex justify-content-between mb-1">
           <div class="text-sm">{{ entry.eventtypename}}</div>
           <div class="text-muted text-sm" v-if="entry.money">
             <span :class="[{'red': entry.money < 0}, {'green': entry.money > 0}]">{{ money }}</span>
@@ -23,6 +23,7 @@ export default {
     'name',
     'entry',
   ],
+  inject: ['compact'],
   methods: {
     /**
      * @return {boolean}
