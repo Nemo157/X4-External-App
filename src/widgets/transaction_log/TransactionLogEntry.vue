@@ -7,7 +7,7 @@
           <small class="text-nowrap">{{ entry.passedtime }}</small>
         </div>
         <div class="d-flex justify-content-between mt-1">
-          <div class="text-sm">{{ entry.eventtypename}}</div>
+          <div class="text-sm">{{ entry.partnername ? entry.eventtypename : ''}}</div>
           <div class="text-muted text-sm" v-if="entry.money">
             <span :class="[{'red': entry.money < 0}, {'green': entry.money > 0}]">{{ money }}</span>
           </div>
@@ -74,7 +74,7 @@ export default {
      * @return {string}
      */
     parsedTitle() {
-      let title = this.entry.partnername;
+      let title = this.entry.partnername || this.entry.eventtypename;
       return title.replace(/\#\w{8}\#/g, this.replaced(this.color(title)))
     },
     /**
